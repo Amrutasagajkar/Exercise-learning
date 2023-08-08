@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "bb71c4fe-c251-46ed-affa-fe55ae2c3f2e",
+		"name": "REQRES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7629404",
+		"_collection_link": "https://bold-meadow-608727.postman.co/workspace/IBM_Aug_2023~b64d7b90-146b-485c-ae30-f8e44cb8fd38/collection/7629404-bb71c4fe-c251-46ed-affa-fe55ae2c3f2e?action=share&creator=7629404&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "LIST USERS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"// javascript  ---- console.log()\r",
+							"//unit testing framework ---- mocha/chai/jasmine\r",
+							"pm.test(\"TC01: verifyStatusCode\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC02: verify value into response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Lindsay\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC03: verify value into response using JSON path\", function () {\r",
+							"    var x = pm.response.json();\r",
+							"    pm.expect(x.data[5].email).to.eql(\"rachel.howell@reqres.in\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC04: non functional requirement, SLA: 2000msec\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC01: verifyStatusCode\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC02: verify value into response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Harinath\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC03: verify value into response using JSON path\", function () {\r",
+							"    var x = pm.response.json();\r",
+							"    pm.expect(x.name).to.eql(\"Harinath\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC04: non functional requirement, SLA: 2000msec\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Harinath\",\r\n    \"job\": \"leader\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"TC01: verifyStatusCode\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC02: verify value into response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Harinath\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC03: verify value into response using JSON path\", function () {\r",
+							"    var x = pm.response.json();\r",
+							"    pm.expect(x.name).to.eql(\"Harinath\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC04: non functional requirement, SLA: 2000msec\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Harinath\",\r\n    \"job\": \"sr.leader\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"TC01: verifyStatusCode\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC04: non functional requirement, SLA: 2000msec\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Harinath\",\r\n    \"job\": \"sr.leader\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
